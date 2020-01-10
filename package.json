@@ -42,5 +42,13 @@
       "git add"
     ]
   },
-  "author": "tgfjt <tgfjt.mail@gmail.com>"
+  "author": "tgfjt <tgfjt.mail@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgfjt/sketch-paste-to-fill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tgfjt/sketch-paste-to-fill/issues"
+  },
+  "homepage": "https://github.com/tgfjt/sketch-paste-to-fill#readme"
 }
