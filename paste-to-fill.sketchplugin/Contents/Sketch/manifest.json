@@ -1,0 +1,26 @@
+{
+  "compatibleVersion": 48,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Fill",
+      "identifier": "paste-to-fill-identifier",
+      "shortcut": "ctrl shift v",
+      "script": "__paste-to-fill.js"
+    }
+  ],
+  "menu": {
+    "title": "Paste to Fill",
+    "items": [
+      "paste-to-fill-identifier"
+    ]
+  },
+  "version": "0.1.0",
+  "description": "Paste your image from clipboard, to fill layer.",
+  "name": "paste-to-fill",
+  "identifier": "paste-to-fill",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml",
+  "author": "tgfjt",
+  "authorEmail": "tgfjt.mail@gmail.com"
+}

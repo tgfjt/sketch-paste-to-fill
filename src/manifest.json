@@ -1,0 +1,18 @@
+{
+  "compatibleVersion": 48,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Fill",
+      "identifier": "paste-to-fill-identifier",
+      "shortcut": "ctrl shift v",
+      "script": "./paste-to-fill.js"
+    }
+  ],
+  "menu": {
+    "title": "Paste to Fill",
+    "items": [
+      "paste-to-fill-identifier"
+    ]
+  }
+}
