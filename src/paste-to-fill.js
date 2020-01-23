@@ -1,7 +1,6 @@
 // https://github.com/sketch-hq/SketchAPI
 const { Style } = require('sketch');
 
-console.log(Style.FillTypeMap);
 function fillObject(imgData, selectedLayers, layersCount) {
   for (let i = 0; i < layersCount; i += 1) {
     const layer = selectedLayers[i];

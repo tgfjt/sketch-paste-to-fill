@@ -15,12 +15,13 @@
       "paste-to-fill-identifier"
     ]
   },
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Paste your image from clipboard, to fill layer.",
+  "homepage": "https://github.com/tgfjt/sketch-paste-to-fill#readme",
   "name": "paste-to-fill",
   "identifier": "paste-to-fill",
   "disableCocoaScriptPreprocessor": true,
-  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml",
+  "appcast": "https://raw.githubusercontent.com/tgfjt/sketch-paste-to-fill/master/.appcast.xml",
   "author": "tgfjt",
   "authorEmail": "tgfjt.mail@gmail.com"
 }
