@@ -102,21 +102,22 @@ var exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// https://github.com/sketch-hq/SketchAPI
-var _require = __webpack_require__(/*! sketch */ "sketch"),
-    Style = _require.Style;
+function initImageData(image) {
+  if (MSImageData.alloc().initWithImage_convertColorSpace !== undefined) {
+    return MSImageData.alloc().initWithImage_convertColorSpace(image, false);
+  }
 
-console.log(Style.FillTypeMap);
+  return MSImageData.alloc().initWithImage(image);
+}
 
-function fillObject(imgData, selectedLayers, layersCount) {
+function fillObject(image, selectedLayers, layersCount) {
   for (var i = 0; i < layersCount; i += 1) {
     var layer = selectedLayers[i];
-    var fill = layer.style().fills().firstObject();
-    var image = NSImage.alloc().initWithData(imgData); // https://developer.sketch.com/reference/api/#stylefilltype
+    var fill = layer.style().fills().firstObject(); // https://developer.sketch.com/reference/api/#stylefilltype
     // https://github.com/sketch-hq/SketchAPI/blob/develop/Source/dom/style/Fill.js#L9
 
     fill.setFillType(4);
-    fill.setImage(MSImageData.alloc().initWithImage(image)); // https://developer.sketch.com/reference/api/#stylepatternfilltype
+    fill.setImage(initImageData(image)); // https://developer.sketch.com/reference/api/#stylepatternfilltype
     // https://github.com/sketch-hq/SketchAPI/blob/develop/Source/dom/style/Fill.js#L25
 
     fill.setPatternFillType(1);
@@ -125,7 +126,9 @@ function fillObject(imgData, selectedLayers, layersCount) {
 
 /* harmony default export */ __webpack_exports__["default"] = (function (context) {
   var doc = context.document;
-  var pasteBoard = NSPasteboard.generalPasteboard(); // copy image via Chrome
+  var pasteBoard = NSPasteboard.generalPasteboard(); //copy file url from Finder
+
+  var fileURL = pasteBoard.stringForType(NSPasteboardTypeFileURL); // copy image via Chrome
 
   var imgData = pasteBoard.dataForType(NSPasteboardTypePNG); // copy image via Safari
 
@@ -138,26 +141,21 @@ function fillObject(imgData, selectedLayers, layersCount) {
     return;
   }
 
+  if (fileURL) {
+    var image = NSImage.alloc().initWithContentsOfURL(NSURL.URLWithString(fileURL));
+    fillObject(image, selectedLayers, layersCount);
+    return;
+  }
+
   if (imgData) {
-    fillObject(imgData, selectedLayers, layersCount);
+    fillObject(NSImage.alloc().initWithData(imgData), selectedLayers, layersCount);
     return;
   }
 
   if (imgTiffData) {
-    fillObject(imgTiffData, selectedLayers, layersCount);
+    fillObject(NSImage.alloc().initWithData(imgTiffData), selectedLayers, layersCount);
   }
 });
-
-/***/ }),
-
-/***/ "sketch":
-/*!*************************!*\
-  !*** external "sketch" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("sketch");
 
 /***/ })
 
