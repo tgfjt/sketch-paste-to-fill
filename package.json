@@ -1,7 +1,7 @@
 {
   "name": "paste-to-fill",
   "description": "Paste your image from clipboard, to fill layer.",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "engines": {
     "sketch": ">=3.0"
   },
